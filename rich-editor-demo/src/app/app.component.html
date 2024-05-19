@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col"></div>
+
+  <div class="col">
+    <br>
+    <form [formGroup]="quillForm">
+
+      <h4 *ngIf="!editable">Text Area:</h4>
+      <textarea *ngIf="!editable" readonly class="editor-style">{{textAreaContent}}</textarea>
+
+      <h4 *ngIf="editable">Quill Editor:</h4>
+      <quill-editor *ngIf="editable" class="editor-style" formControlName="quillContent"></quill-editor>
+      <br>
+
+      <button class="btn btn-sm btn-primary" (click)="toggleEdit()">
+        Toggle Edit
+      </button>
+
+      <button class="btn btn-sm btn-primary m-2" [disabled]="quillForm.invalid" (click)="quillSubmit()">
+        Submit
+      </button>
+
+      <button class="btn btn-sm btn-secondary" (click)="changeQuillContent()">
+        Change Quill Content
+      </button>
+    </form>
+  </div>
+
+  <div class="col"></div>
+</div>
